@@ -1,0 +1,51 @@
+<div class="container">
+    <div>
+        <h2>Crud operation</h2>
+    </div>
+    <div>
+        <form [formGroup]="form">
+            <input type="text" placeholder="First name"  formControlName="firstName"  id="name" class="form-control"  />&nbsp;
+
+            <input type="text" placeholder="Last name"  formControlName="lastName"  id="name" class="form-control"  />&nbsp;
+
+            <button *ngIf="!isedit" type="submit" id="save" name="save" value="Save" (click)="submit()" class="btn btn-primary">Save</button>
+            <button  *ngIf="isedit" type="submit" id="save" name="save" value="Save" (click)="updateUser()" class="btn btn-primary">update</button>
+        </form>
+    </div>
+    <div style="margin-top: 10px;">
+        <table class="table table-striped table-bordered" >
+            <thead>
+                <tr>
+                    <th>
+                        firstName
+                    </th>
+                    <th>
+                        lastName
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                    <th>
+                        Update
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of userList">
+                    <td>
+                        {{user.firstName}}
+                    </td>
+                    <td>
+                        {{user.lastName}}
+                    </td>
+                    <td (click)="delete(user.id)">
+                        Delete
+                    </td>
+                    <td (click)="update(user)">
+                        Update
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
